@@ -1,0 +1,605 @@
+body {
+    padding-top: 70px; /* Para evitar que el contenido quede detrás del menú */
+    font-family: 'Futura MD', sans-serif;
+}
+
+/* Estilos del menú de navegación */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+    background-color: #FFCC00; /* Fondo amarillo del menú */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Añadir una sombra suave */
+}
+
+.navbar-brand img {
+    width: 195px; /* Ajusta el tamaño del logo */
+}
+
+.navbar-nav .nav-item .nav-link {
+    color: #333; /* Color del texto */
+    font-weight: 500; /* Texto ligeramente más grueso */
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transición suave */
+    /*font-family: 'Arial', sans-serif; !* Fuente más moderna *!*/
+}
+
+.navbar-nav .nav-link {
+    padding-left: 15px; /* Ajusta este valor */
+    padding-right: 15px; /* Ajusta este valor */
+    white-space: nowrap; /* Evita que el texto se divida en dos líneas */
+}
+
+/* Efecto hover en los botones del menú */
+.navbar-nav .nav-item .nav-link:hover {
+    background-color: #075EB0; /* Fondo azul en hover */
+    color: #fff; /* Texto blanco en hover */
+}
+
+.nav-item .nav-link {
+    white-space: nowrap; /* Mantiene todo el texto en una sola línea */
+}
+
+/* Enlace activo con color distinto */
+.navbar-nav .nav-item .nav-link.active {
+    background-color: #075EB0; /* Fondo azul para la página activa */
+    color: #fff; /* Texto blanco para la página activa */
+    font-weight: 600;
+}
+
+/* Estilos del teléfono */
+.navbar-phone {
+    font-size: 16px;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar-phone .phone-number {
+    margin-left: 5px;
+}
+
+.navbar-phone i {
+    font-size: 20px;
+    /*color: #25D366; !* Color oficial de WhatsApp *!*/
+    color: #000;
+}
+
+.navbar-phone .phone-number a {
+    color: inherit; /* Hereda el color del contenedor o texto padre */
+    text-decoration: none; /* Elimina el subrayado */
+}
+
+.navbar-phone .phone-number a:hover {
+    color: inherit; /* Mantiene el color al hacer hover */
+    text-decoration: none; /* Evita que el subrayado aparezca al pasar el ratón */
+}
+
+.center-top-image {
+    position: absolute;
+    top: 10%; /* Ajusta la distancia desde la parte superior */
+    left: 50%;
+    transform: translateX(-50%) scale(0.5); /* Empieza con un tamaño más pequeño */
+    width: 30%; /* Ajusta el tamaño de la imagen según sea necesario */
+    z-index: 2; /* Asegúrate de que esté por encima del banner */
+    animation: zoomIn 3s ease-in-out forwards; /* Añade la animación */
+}
+
+@keyframes zoomIn {
+    0% {
+        transform: translateX(-50%) scale(0.5); /* Imagen pequeña al inicio */
+        opacity: 0; /* Transparente al inicio */
+    }
+    100% {
+        transform: translateX(-50%) scale(1); /* Tamaño normal al final */
+        opacity: 1; /* Completamente visible al final */
+    }
+}
+
+.overlay-left,
+.overlay-left-1,
+.overlay-bottom-center,
+.overlay-bottom-center-1 {
+    position: absolute;
+}
+
+.overlay-left {
+    left: 10px;
+    top: 20%;
+    /*transform: translate(-50%, -50%);*/
+    animation: moveToLeft 2s forwards; /* Animación de 2 segundos */
+    width: 15%;
+    position: absolute;
+}
+
+@keyframes moveToLeft {
+    0% {
+        left: 50%; /* Comienza en el centro */
+        top: 50%;
+    }
+    100% {
+        left: 20px; /* Termina en la posición final */
+        top: 13%;
+    }
+}
+
+.overlay-left-1 {
+    /*left: 20px;*/
+    /*top: 15%;*/
+    /*transform: translate(-50%, -50%);*/
+    animation: moveToLeft-1 2s forwards; /* Animación de 2 segundos */
+    width: 20%;
+}
+
+@keyframes moveToLeft-1 {
+    0% {
+        left: 50%; /* Comienza en el centro */
+        top: 30%;
+    }
+    100% {
+        left: 50px; /* Termina en la posición final */
+        top: 22%;
+    }
+}
+
+.overlay-bottom-center {
+    left: 76%;
+    bottom: -10px;
+    width: 20%;
+    animation: moveFromTop 2s forwards; /* Animación de 2 segundos */
+}
+
+@keyframes moveFromTop {
+    0% {
+        top: 200%; /* Comienza desde arriba */
+    }
+    100% {
+        top: 20px; /* Termina en la parte baja del carousel */
+    }
+}
+
+.overlay-bottom-center-1 {
+    left: 15%;
+    bottom: 40px;
+    width: 15%;
+    /*animation: moveFromTop-1 2s forwards; !* Animación de 2 segundos *!*/
+}
+
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: scale(1.05); /* Escala ligeramente para dar un efecto de enfoque */
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1); /* Tamaño original */
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1.05); /* Escala ligeramente para dar un efecto de desenfoque */
+    }
+}
+
+.carousel-item {
+    opacity: 0; /* Oculta las imágenes por defecto */
+}
+
+.carousel-item-next,
+.carousel-item-prev {
+    animation: fadeOut 1s ease-in-out forwards; /* Desaparece */
+}
+
+.carousel-item-next.carousel-item-left,
+.carousel-item-prev.carousel-item-right {
+    animation: fadeIn 1.5s ease-in-out forwards; /* Aparece */
+}
+
+.carousel-item.active {
+    opacity: 1; /* La imagen activa será visible */
+    animation: fadeIn 1.5s ease-in-out forwards; /* Aparece */
+    z-index: 1; /* Asegura que esté por encima de las otras imágenes */
+}
+
+.carousel-inner {
+    position: relative;
+    height: 100%; /* Asegura que el carrusel ocupe todo el espacio disponible */
+}
+
+h2, h4 {
+    font-family: 'Futura MD', sans-serif; /* Aplica la fuente Futura PT a títulos */
+    /*font-weight: bold;*/
+}
+
+p {
+    font-family: 'Futura MD', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    color: #333 !important;
+    text-align: justify;
+}
+
+@font-face {
+    font-family: 'Futura MD';
+    src: url('../fonts/Futura Md BT Medium.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Futura MD';
+    src: url('../fonts/Futura Bk BT Book.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+/* Estilo para el título "Nuestros Servicios" */
+.section-title {
+    font-family: 'Futura MD', sans-serif; /* Aplica la fuente Futura MD */
+    color: #075EB0; /* Color azul */
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+/* Estilo para el subtítulo */
+.section-subtitle {
+    font-family: 'Futura MD', sans-serif;
+    margin-bottom: 20px;
+    font-size: 38px;
+}
+
+/* Título de cada servicio */
+.service-title {
+    font-family: 'Futura MD', sans-serif;
+    font-size: 24px;
+    color: #075EB0; /* Color azul */
+    /*font-weight: 800;*/
+    margin-bottom: 20px;
+}
+
+.services-section {
+    padding: 50px 0; /* Añade espacio arriba y abajo de la sección */
+    overflow: hidden; /* Para evitar scroll horizontal durante la animación */
+}
+
+.mission-section, .services-section {
+    position: relative;
+    z-index: 1;
+}
+
+.service-box {
+    margin-bottom: 60px; /* Aumenta el espacio entre cada servicio */
+}
+
+.section-title,
+.section-subtitle {
+    opacity: 0;
+    transform: scale(0.5);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.section-title.animate,
+.section-subtitle.animate {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.section-subtitle {
+    transition-delay: 0.5s; /* Retrasa ligeramente la animación del subtítulo */
+}
+
+/* Imagen alineada con el texto */
+/*.service-box img {*/
+/*    max-width: 100%;*/
+/*    height: auto;*/
+/*    margin-right: 20px;*/
+/*}*/
+
+.service-image {
+    opacity: 0;
+    transform: scale(0.1);
+    transition: all 1.5s ease-in-out;
+    border-radius: 15px; /* Esquinas redondeadas */
+    box-shadow: 0 0 30px rgba(0,0,0,0.3); /* Sombra suave para el efecto difuminado */
+}
+
+.service-image.animate {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.image-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px; /* Esquinas redondeadas para el contenedor */
+    margin-bottom: 30px; /* Añade espacio debajo de la imagen */
+}
+
+.image-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+            ellipse at center,
+            transparent 60%,
+            rgba(255,255,255,0.5) 100%
+    );
+    pointer-events: none;
+    z-index: 1;
+}
+
+.image-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to right, rgba(255,255,255,0.5), transparent 30%, transparent 70%, rgba(255,255,255,0.5));
+    pointer-events: none; /* Permite que los clics pasen a través */
+    z-index: 2;
+}
+
+.service-content {
+    padding-left: 30px; /* Añade espacio a la izquierda del contenido de texto */
+}
+
+/* Pie de página */
+.footer {
+    background-color: #075EB0; /* Fondo oscuro */
+    color: #fff; /* Texto claro */
+    padding: 40px 0;
+}
+
+.footer h5 {
+    font-family: 'Futura MD', sans-serif;
+    font-size: 18px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.footer p, .footer a {
+    font-size: 16px; /* Tamaño de fuente más grande para mejor legibilidad */
+    line-height: 1.6; /* Aumentar el espaciado entre líneas */
+    color: #ddd !important; /* Cambiar a un tono gris claro */
+}
+
+.footer a {
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: #007BFF; /* Enlaces cambian a azul en hover */
+}
+
+.footer .social-icons a {
+    margin-right: 15px;
+    font-size: 20px;
+    display: inline-block;
+}
+
+.footer .social-icons a:hover {
+    color: #007BFF; /* Iconos cambian a azul en hover */
+}
+
+.footer p i {
+    margin-right: 10px; /* Espaciado entre el ícono y el texto */
+}
+
+/* Animación de entrada desde la izquierda */
+@keyframes slide-in-left {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Animación de entrada desde la derecha */
+@keyframes slide-in-right {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Ocultar las cajas de servicio inicialmente */
+.service-box {
+    opacity: 0;
+    transform: translateX(0); /* Evitamos que se mueva antes de la animación */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Cuando se activa la animación para las cajas impares (desde la izquierda) */
+.service-box.active:nth-child(odd) {
+    animation: slide-in-left 0.6s forwards; /* Slide desde la izquierda */
+}
+
+/* Cuando se activa la animación para las cajas pares (desde la derecha) */
+.service-box.active:nth-child(even) {
+    animation: slide-in-right 0.6s forwards; /* Slide desde la derecha */
+}
+
+/* Ajustes para dispositivos móviles */
+@media (max-width: 768px) {
+    .overlay-left,
+    .overlay-bottom-center {
+        width: 50px;
+    }
+
+    .navbar-nav .nav-item .nav-link {
+        margin-bottom: 5px;
+        text-align: center;
+    }
+
+    .navbar-phone {
+        display: none; /* Ocultar en pantallas pequeñas */
+    }
+
+    .navbar-nav .nav-link {
+        font-size: 14px; /* Reduce el tamaño de fuente en pantallas pequeñas */
+        margin-bottom: 5px;
+        text-align: center;
+    }
+
+    /*.service-box {*/
+    /*    text-align: center;*/
+    /*    margin-bottom: 20px;*/
+    /*}*/
+
+    /*.service-box img {*/
+    /*    margin-right: 0;*/
+    /*    margin-bottom: 10px;*/
+    /*}*/
+
+    .center-top-image {
+        width: 30%; /* Aumenta el tamaño en pantallas pequeñas */
+    }
+
+    .service-content {
+        padding-left: 0; /* Elimina el padding en dispositivos móviles */
+        margin-top: 30px; /* Añade espacio arriba del contenido en móviles */
+    }
+
+}
+
+@media (min-width: 992px) {
+    .col-lg-5th {
+        flex: 0 0 20%;
+        max-width: 20%;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .navbar-phone {
+        margin: 1rem 0;
+        font-size: 0.9em;
+    }
+
+    .container-fluid {
+        flex-direction: column;
+    }
+
+    .navbar-toggler {
+        margin-left: auto;
+    }
+}
+
+/* Ajuste para móvil */
+@media (max-width: 576px) {
+    .section-subtitle {
+        font-size: 1.5rem; /* Tamaño más pequeño para móvil */
+        margin: 1rem 0;
+        line-height: 1.3; /* Mejora el espaciado entre líneas */
+    }
+
+    .service-title {
+        font-size: 1rem; /* Tamaño más pequeño para móvil */
+        margin: 1rem 0;
+        line-height: 1.3; /* Mejora el espaciado entre líneas */
+    }
+}
+
+/* Ajustes solo para móvil */
+@media (max-width: 576px) {
+    /* Contenedor del carrusel */
+    #carouselExample {
+        margin-top: 40px; /* Ajusta la posición vertical del banner */
+    }
+
+    .carousel-item {
+        height: 300px; /* Aumentamos la altura para mostrar todo el contenido */
+        position: relative !important;
+    }
+
+    /* Imagen principal del banner */
+    .carousel-item img.d-block {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center; /* Centra la imagen */
+    }
+
+    /* Ajustes para las imágenes superpuestas */
+    .overlay-left {
+        position: absolute;
+        width: 140px;
+        left: 5px;
+        top: 40%;
+        /*transform: translateY(-50%);*/
+        z-index: 2;
+    }
+
+    .center-top-image {
+        display: none;
+        /*position: absolute;*/
+        /*width: 180px;*/
+        /*left: 50%;*/
+        /*top: 20%;*/
+        /*transform: translateX(-50%);*/
+        /*z-index: 2;*/
+    }
+
+    .overlay-left-1 {
+        position: absolute;
+        width: 140px;
+        left: 5px;
+        top: 40%;
+        transform: translateY(-50%);
+        z-index: 2;
+    }
+
+    .overlay-bottom-center {
+        position: absolute;
+        width: 160px;
+        /*left: 50%;*/
+        bottom: 15% !important;
+        transform: translateX(-50%);
+        z-index: 3;
+    }
+
+    .overlay-bottom-center-1 {
+        position: absolute;
+        width: 150px;
+        left: 70%;
+        bottom: 20%;
+        transform: translateX(-50%);
+        z-index: 2;
+    }
+
+    /* Aseguramos que todas las imágenes superpuestas sean visibles */
+    .carousel-item img:not(.d-block) {
+        max-width: 100%;
+        height: auto;
+        pointer-events: none; /* Previene interacciones no deseadas */
+    }
+
+    /* Ajustamos los controles del carrusel */
+    .carousel-control-prev,
+    .carousel-control-next {
+        height: 100%;
+        top: 0;
+    }
+}
+
